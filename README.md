@@ -44,4 +44,4 @@ Para myPATH se debería tomar  la ruta que esta entre el host y las rutas del pr
 `npm install`
 
 ## En uso
-![ya me quiero dormir](https://lh4.googleusercontent.com/Fbnx2Sox_SM4zkBoCxu3WgS8D_OIfJQLLnBKXHgpNIv78EtqpN4iU5-yuW7Ty6PMlCvFm9sElDZiCg=w1366-h637-rw)
+https://lh4.googleusercontent.com/Fbnx2Sox_SM4zkBoCxu3WgS8D_OIfJQLLnBKXHgpNIv78EtqpN4iU5-yuW7Ty6PMlCvFm9sElDZiCg=w1366-h637-rw)
