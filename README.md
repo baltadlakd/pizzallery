@@ -24,7 +24,8 @@ junto con
 siendo la ruta del proyecto donde se estará probando. En este caso la ruta original  es
 
 > https://localhost/programacion/pizzallery/public/usuario/panel
-https://localhost **/programacion/pizzallery/public/** usuario/panel
+
+>https://localhost **/programacion/pizzallery/public/** usuario/panel
 
 Para myPATH se debería tomar  la ruta que esta entre el host y las rutas del proyecto.
 ## Software necesario
