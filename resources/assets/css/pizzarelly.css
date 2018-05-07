@@ -1,0 +1,45 @@
+.btn-github {
+  color: #6E5494;
+  background-color: #611BBD;
+  border-color: #4025C7;
+}
+
+.btn-github:hover,
+.btn-github:focus,
+.btn-github:active,
+.btn-github.active,
+.open .dropdown-toggle.btn-github {
+  color: #6E5494;
+  background-color: #6B42A1;
+  border-color: #4025C7;
+}
+
+.btn-github:active,
+.btn-github.active,
+.open .dropdown-toggle.btn-github {
+  background-image: none;
+}
+
+.btn-github.disabled,
+.btn-github[disabled],
+fieldset[disabled] .btn-github,
+.btn-github.disabled:hover,
+.btn-github[disabled]:hover,
+fieldset[disabled] .btn-github:hover,
+.btn-github.disabled:focus,
+.btn-github[disabled]:focus,
+fieldset[disabled] .btn-github:focus,
+.btn-github.disabled:active,
+.btn-github[disabled]:active,
+fieldset[disabled] .btn-github:active,
+.btn-github.disabled.active,
+.btn-github[disabled].active,
+fieldset[disabled] .btn-github.active {
+  background-color: #611BBD;
+  border-color: #4025C7;
+}
+
+.btn-github .badge {
+  color: #611BBD;
+  background-color: #6E5494;
+}
