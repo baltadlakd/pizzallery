@@ -87,6 +87,9 @@ export default {
       offset:2,
     }
   },
+  props:[
+    'ruta',
+  ],
   computed:{
     isActived: function() {
 			return this.laravelData.current_page;
@@ -122,9 +125,6 @@ export default {
 			return pagesArray;
 		}
   },
-  props:[
-    'uiLaravel',
-  ],
   methods:{
     hasSocial(user,social){
       var r = false;
@@ -144,7 +144,7 @@ export default {
       if(typeof page === 'undefined'){
         page = 1;
       }
-      var url = this.uiLaravel + "?page=" + page;
+      var url = this.ruta + "?page=" + page;
       console.log(url);
       axios.get(url)
         .then( response =>{

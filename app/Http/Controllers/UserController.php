@@ -16,7 +16,10 @@ class UserController extends Controller
         return view('users.panel.control', compact('user'));
     }
 
-    public function show($id){
+    public function show(Request $request, $id){
+      if(!$request->ajax()){
+        return redirect()->back();
+      }
       $user = User::find($id);
       $user->load('socialProvider');
       if($user->password){
@@ -26,14 +29,22 @@ class UserController extends Controller
       }
       return $user;
     }
-    public function all(){
-      $users = User::where('name','!=','')
-      ->with('socialProvider')
-      ->paginate(10);
-      return $users;
+    public function all(Request $request){
+      if($request->ajax()){
+        $users = User::where('name','!=','')
+        ->with('socialProvider')
+        ->paginate(10);
+        return $users;
+      }else{
+        return redirect()->back();
+      }
+
     }
 
     public function createPassword(Request $request, User $user){
+      if(!$request->ajax()){
+        return redirect()->back();
+      }
       $this->validate(request(),[
         'password'=>'required|string|alpha_num|max:100|min:5|confirmed'
       ]);
@@ -46,6 +57,9 @@ class UserController extends Controller
       ];
     }
     public function updatePassword(Request $request, User $user){
+      if(!$request->ajax()){
+        return redirect()->back();
+      }
       $this->validate(request(),[
         'old_password'=>'required|string|alpha_num|max:100|min:5',
         'password'=>'required|string|alpha_num|max:100|min:5|confirmed'
@@ -71,6 +85,9 @@ class UserController extends Controller
     }
 
     public function editName(Request $request, User $user){
+      if(!$request->ajax()){
+        return redirect()->back();
+      }
       $this->validate(request(),[
         'name'=>'required|string|max:100|min:8'
       ]);
@@ -85,6 +102,9 @@ class UserController extends Controller
     }
 
     public function update(Request $request, User $user){
+      if(!$request->ajax()){
+        return redirect()->back();
+      }
       $this->validate(request(),[
         'phone'=>'required|numeric|phone',
         'age'=>'required|numeric'
@@ -102,6 +122,9 @@ class UserController extends Controller
     }
 
     public function destroy(User $user){
+      if(!$request->ajax()){
+        return redirect()->back();
+      }
       $nomequieroirseñorstark = User::find($user->id);
       $nomequieroirseñorstark->delete();
     }

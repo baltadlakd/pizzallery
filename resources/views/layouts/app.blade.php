@@ -67,7 +67,9 @@
                                     </a>
                                     <a class="dropdown-item" href="{{ route('userPanel') }}" >{{ __('Panel de control') }}
                                     </a>
-
+                                    @if( Auth::user()->hasRole('admin') )
+                                        <a class="dropdown-item" href="{{ route('admin') }}" >{{ __('Admin') }}</a>
+                                    @endif
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -86,3 +88,7 @@
     </div>
 </body>
 </html>
+
+<script>
+
+</script>

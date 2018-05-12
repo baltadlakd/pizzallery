@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     @isset($user->password)
         <bar
             v-bind:ren=`{!! route('editName',[Auth::User()->id]) !!}`
@@ -33,4 +34,7 @@
     @endisset
     <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
         @include('partials.errors')
+
+
+
 @endsection

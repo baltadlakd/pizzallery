@@ -14,9 +14,9 @@
                       <li class="nav-item">
                           <a class="nav-link pl-0" href="#" v-on:click.prevent="option(2)" >Cambiar contraseña</a>
                       </li>
-                      <li class="nav-item">
+                      <!--<li class="nav-item">
                           <a class="nav-link pl-0" href="#" v-on:click.prevent="option(3)">Usuarios</a>
-                      </li>
+                      </li>-->
                       <li class="nav-item">
                           <a class="nav-link pl-0" href="#" v-on:click.prevent="option(4)">Formas de pago</a>
                       </li>
@@ -57,10 +57,10 @@
               v-bind:vroute="rup"
             >
           </update-password>
-          <div v-if="menu == 3" class="container-fluid">
-            <user-table v-bind:uiLaravel="all"> </user-table>
+          <!--<div v-if="menu == 3" class="container-fluid">
+            <user-table v-bind:ruta="all"> </user-table>
 
-          </div>
+          </div>-->
           <div class="container-fluid"
             v-if="menu == 4">
               <cards

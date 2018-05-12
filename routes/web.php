@@ -23,6 +23,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/privacy', 'HomeController@privacy')->name('privacy');
+Route::get('/admin','HomeController@admin')->name('admin')->middleware('role:admin');
 
 //=== Redes sociales
 

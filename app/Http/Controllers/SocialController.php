@@ -8,6 +8,7 @@ use Socialite;
 
 use pizzallery\User;
 use pizzallery\SocialProvider;
+use pizzallery\Role;
 use Auth;
 use Alert;
 
@@ -42,7 +43,8 @@ class SocialController extends Controller
             alert()->error('Oops...', 'Esta cuenta ya esta vinculada a otro usuario!');
             return redirect()->route('userPanel');
           }
-        }else{//no esta logueado
+        }
+        else{//no esta logueado
           if(!$social){
               $correo = $userinfo->getEmail();
               if(!$correo){
@@ -58,7 +60,8 @@ class SocialController extends Controller
                   'provider_id'=>$userinfo->getId(),
                   'provider'=>$provider
               ]);
-
+              $user->roles()
+                    ->attach(Role::where('name', 'user')->first());
           }
           else{
               $user = $social->user;

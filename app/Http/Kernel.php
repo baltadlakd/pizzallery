@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         'guest' => \pizzallery\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'role' => \pizzallery\Http\Middleware\CheckRole::class,
     ];
 }

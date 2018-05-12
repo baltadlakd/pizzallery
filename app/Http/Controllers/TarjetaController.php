@@ -14,12 +14,14 @@ class TarjetaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(Request $request){
+      if(!$request->ajax()){
+        return redirect()->back();
+      }
       if(Auth::check()){
           $cc = Tarjeta::where('user_id',Auth::id())->get();
           foreach($cc as $card){
-            $card->fecha = $card->date;            
+            $card->fecha = $card->date;
           }
           return $cc;
       }
@@ -47,8 +49,10 @@ class TarjetaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+      if(!$request->ajax()){
+        return redirect()->back();
+      }
         $user = User::find($request->user['id']);
         $user->tarjetas()->create([
           'name'=>$request->name,
@@ -80,6 +84,9 @@ class TarjetaController extends Controller
      */
     public function edit(Tarjeta $tarjeta)
     {
+      if(!$request->ajax()){
+        return redirect()->back();
+      }
         $cc = Tarjeta::find($tarjeta->id);
         return $cc;
     }
@@ -93,6 +100,9 @@ class TarjetaController extends Controller
      */
     public function update(Request $request, Tarjeta $tarjeta)
     {
+      if(!$request->ajax()){
+        return redirect()->back();
+      }
       $cc = Tarjeta::find($tarjeta->id);
       $cc->update([
         'name'=>$request->name,
@@ -118,6 +128,9 @@ class TarjetaController extends Controller
      */
     public function destroy(Tarjeta $tarjeta)
     {
+      if(!$request->ajax()){
+        return redirect()->back();
+      }
         $cc = Tarjeta::find($tarjeta->id);
         $cc->delete();
         return [
