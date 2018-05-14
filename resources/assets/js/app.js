@@ -11,6 +11,7 @@ window.Vue = require('vue');
 require('sweetalert2');
 
 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -25,6 +26,15 @@ Vue.component('bar', require('./components/users/bar.vue'));
 Vue.component('user-table',require('./components/users/userTable.vue'));
 Vue.component('show-info',require('./components/users/showInfo.vue'));
 Vue.component('cards',require('./components/users/cards.vue'));
+
+
+Vue.component('pizza-index',require('./components/pizzas/pizzaIndex.vue'));
+Vue.component('pizza-show',require('./components/pizzas/pizzaShow.vue'));
+
+Vue.component('hamburger-index',require('./components/hamburguesas/hamburguesaIndex.vue'));
+Vue.component('hamburger-show',require('./components/hamburguesas/hamburguesaShow.vue'));
+
+Vue.component('comment',require('./components/comments/comment.vue'));
 
 
 

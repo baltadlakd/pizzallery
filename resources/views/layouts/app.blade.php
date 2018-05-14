@@ -13,7 +13,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer>
-        window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token()]); ?>
+    window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token()]); ?>
     </script>
     <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
     <script src="https://unpkg.com/promise-polyfill@7.1.0/dist/promise.min.js"></script>
@@ -32,7 +32,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -44,7 +44,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{route('pizzaIndex')}}">Pizzas</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{route('hamburgerIndex')}}">Hamburguesas</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -61,34 +66,40 @@
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('userPanel') }}" >{{ __('Panel de control') }}
-                                    </a>
-                                    @if( Auth::user()->hasRole('admin') )
-                                        <a class="dropdown-item" href="{{ route('admin') }}" >{{ __('Admin') }}</a>
-                                    @endif
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('userPanel') }}" >{{ __('Panel de control') }}
+                                </a>
+                                @if( Auth::user()->hasRole('admin') )
+                                    <a class="dropdown-item" href="{{ route('admin') }}" >{{ __('Admin') }}</a>
+                                @endif
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <main class="py-4">
-            @include('sweetalert::alert')
-            @yield('content')
-        </main>
-    </div>
+    <main class="py-4">
+        @include('sweetalert::alert')
+        @yield('content')
+    </main>
+</div>
 </body>
 </html>
 
 <script>
 
 </script>
+
+<style lang="css">
+body {
+    background-color: SNOW;
+}
+</style>

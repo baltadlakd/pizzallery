@@ -39,6 +39,13 @@ class User extends Authenticatable
     return $this->hasMany('pizzallery\Tarjeta');
   }
 
+  public function pizzas(){
+    return $this->hasMany('pizzallery\Pizza');
+  }
+  public function comments(){
+    return $this->hasMany('pizzallery\Comment');
+  }
+
   public function roles()
   {
     return $this->belongsToMany('pizzallery\Role')

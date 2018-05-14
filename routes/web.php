@@ -16,14 +16,14 @@ if (env('APP_ENV') === 'local') {
 }
 
 Route::get('/', function () {
-    return view('index');
+    return view('pizzas.index');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/privacy', 'HomeController@privacy')->name('privacy');
-Route::get('/admin','HomeController@admin')->name('admin')->middleware('role:admin');
+Route::get('/admin','HomeController@admin')->name('admin')->middleware('auth','role:admin');
 
 //=== Redes sociales
 
@@ -52,3 +52,21 @@ Route::delete('usuario/{user}','UserController@destroy')->name('deleteUser')->mi
 Route::resource('tarjetas', 'TarjetaController')->except([
     'create', 'show'
 ]);
+//====  $pizzas
+
+Route::get('pizza','PizzaController@index')->name('pizzaIndex');
+Route::get('pizza/{pizza}','PizzaController@show')->name('pizzaShow')->middleware('auth');
+
+//====  $hamburguesas
+
+Route::get('hamburguesa','HamburgerController@index')->name('hamburgerIndex');
+Route::get('hamburguesa/{hamburger}','HamburgerController@show')->name('hamburgerShow')->middleware('auth');
+
+//==== comments
+
+Route::get('comentarios/{type}/{id}','CommentController@index')->middleware('auth');
+Route::post('comentarios/{type}/{id}','CommentController@store')->middleware('auth');
+
+//==== ingredientes
+Route::get('ingredientes/{type}/{id}','TagController@index')->middleware('auth');
+Route::post('ingredientes/{type}/{id}','TagController@store')->middleware('auth');

@@ -2,19 +2,24 @@
 
 namespace pizzallery\Http\Controllers;
 
-use pizzallery\Role;
+use pizzallery\Hamburger;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class HamburgerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+      if(!$request->ajax()){
+        return view('hamburguesas.index');
+      }
+      $hamburgers = Hamburger::with('user')
+        ->paginate(8);
+      return $hamburgers;
     }
 
     /**
@@ -41,21 +46,27 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \pizzallery\Role  $role
+     * @param  \pizzallery\Hamburger  $hamburger
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function show(Request $request,$id)
     {
-        //
+      if($request->ajax()){
+        $hamburger = Hamburger::find($id);
+        $hamburger->load('user');
+        return $hamburger;
+      }else{
+        return view('hamburguesas.show',['id'=>$request->hamburger]);
+      }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \pizzallery\Role  $role
+     * @param  \pizzallery\Hamburger  $hamburger
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit(Hamburger $hamburger)
     {
         //
     }
@@ -64,10 +75,10 @@ class RoleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \pizzallery\Role  $role
+     * @param  \pizzallery\Hamburger  $hamburger
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, Hamburger $hamburger)
     {
         //
     }
@@ -75,10 +86,10 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \pizzallery\Role  $role
+     * @param  \pizzallery\Hamburger  $hamburger
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy(Hamburger $hamburger)
     {
         //
     }
