@@ -125,8 +125,8 @@ class UserController extends Controller
       if(!$request->ajax()){
         return redirect()->back();
       }
-      $nomequieroirseñorstark = User::find($user->id);
-      $nomequieroirseñorstark->delete();
+      $usuario = User::find($user->id);
+      $usuario->delete();
     }
 
 }
