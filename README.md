@@ -21,6 +21,8 @@ En el archivo *.env* se deben introducir las credenciales como
 junto con
 
     myPATH = '/programacion/pizzallery/public/'
+    
+    MIX_PATH = "/programacion/pizzallery/public/"
 siendo la ruta del proyecto donde se estará probando. En este caso la ruta original  es
 
 > https://localhost/programacion/pizzallery/public/usuario/panel
