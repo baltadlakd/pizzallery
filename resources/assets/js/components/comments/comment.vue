@@ -25,7 +25,7 @@
         <li v-for="item in comments" class="list-group-item">
           <!--Comment start-->
           <div class="media">
-            <img class="mr-3 rounded-circle img-fluid" style="max-width: 7%;" src="http://i.imgur.com/mFqLYAJ.png" alt="foto perfil">
+            <img @error="item.user.avatar = imageLoadError()" class="mr-3 rounded border border-dark img-fluid" style="max-width: 7%;" v-bind:src="img(item.user.avatar)">
             <div class="media-body">
               <p class="font-weight-bold text-left" style="margin-bottom:0;">{{item.user.name}}</p>
               <span class="help-block text-muted small-font" >{{ getHumanDate(item.updated_at) }}</span>
@@ -64,6 +64,19 @@ export default {
     }
   },
   methods:{
+    imageLoadError () {
+      return null;
+    },
+    img(image){
+      var path = '';
+      if(image){
+        path = window.location.origin + this.path+"storage/" + image;
+        console.log("imagen->",path);
+      }else{
+        path = window.location.origin + this.path+"imgs/avatar-1.png";
+      }
+      return path;
+    },
     getHumanDate : function (date) {
 
       return moment.utc(date).local().format('MM/DD/YYYY, h:mm a');

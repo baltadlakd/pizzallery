@@ -20,6 +20,9 @@
                       <li class="nav-item">
                           <a class="nav-link pl-0" href="#" v-on:click.prevent="option(4)">Formas de pago</a>
                       </li>
+                      <li class="nav-item">
+                          <a class="nav-link pl-0" href="#" v-on:click.prevent="option(5)">Cambiar avatar</a>
+                      </li>
                     </ul>
                 </div>
             </nav>
@@ -80,12 +83,14 @@
 export default {
   mounted(){
     console.log("VUE_bar");
+    this.path = process.env.MIX_PATH;
   },
   created(){
   },
   data(){
     return{
       menu:0,
+      path:'',
     }
   },
   props: [
@@ -100,10 +105,17 @@ export default {
     'fb',
     'gh',
     'gp',
-    'path',
   ],
   methods:{
     option(c){
+      if(c == 5){
+        var route = window.location.origin +this.path+"avatar";
+        console.log(".",route);
+        setTimeout(function () {
+            console.log("-",route);
+            window.location.replace( route );
+          }, 500);
+      }
       this.menu = c;
       console.log(c);
     },

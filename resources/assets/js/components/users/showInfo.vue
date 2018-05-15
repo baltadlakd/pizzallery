@@ -11,6 +11,7 @@
             <div class="container">
               <div class="form">
                 <!--<form @keydown="clearError($event.target.name)">-->
+                <img @error="item.user.avatar = imageLoadError()" class="mr-3 rounded border border-dark img-fluid" style="max-width: 50%;" v-bind:src="img(user.avatar)">
                 <form @keydown="clearError($event.target.name)">
 
                   <fieldset class="form-group">
@@ -181,6 +182,18 @@ export default {
     'path',
   ],
   methods:{
+    imageLoadError () {
+      return null;
+    },
+    img(image){
+      var path = '';
+      if(image){
+        path = window.location.origin + this.path+"storage/" + image;
+      }else{
+        path = window.location.origin + this.path+"imgs/avatar-1.png";
+      }
+      return path;
+    },
     deleteUser(){
       swal({
         title: 'Estas seguro de eliminar tu usuario?',

@@ -18,7 +18,7 @@ class User extends Authenticatable
   *
   * @var array
   */
-  protected $fillable = ['name', 'email', 'password',];
+  protected $fillable = ['name', 'email', 'password','avatar'];
 
   protected $dates = ['deleted_at'];
 
@@ -81,6 +81,4 @@ class User extends Authenticatable
     }
     return false;
   }
-
-
 }

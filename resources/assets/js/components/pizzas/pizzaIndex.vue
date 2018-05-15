@@ -37,7 +37,7 @@
       <img class="card-img-top" src="imgs/pizza.jpg">
       <div class="card-block">
         <figure class="profile">
-          <img src="imgs/avatar-1.png" class="profile-avatar" alt="">
+          <img @error="item.user.avatar = imageLoadError()" v-bind:src="img(item.user.avatar)" class="profile-avatar" alt="">
         </figure>
         <div class="meta card-text text-info">
           <span class="badge badge-pill badge-info">{{ item.user.name }}</span>
@@ -85,9 +85,22 @@ export default {
       offset:5,
       errors:{},
       path:'',
+      tmp:'',
     }
   },
   methods:{
+    imageLoadError () {
+      return null;
+    },
+    img(image){
+      var path = '';
+      if(image){
+        path = window.location.origin + this.path+"storage/" + image;
+      }else{
+        path = window.location.origin + this.path+"imgs/avatar-1.png";
+      }
+      return path;
+    },
     show(id){
       window.location.replace(this.path + "pizza/" + id);
     },

@@ -27,6 +27,8 @@ Vue.component('user-table',require('./components/users/userTable.vue'));
 Vue.component('show-info',require('./components/users/showInfo.vue'));
 Vue.component('cards',require('./components/users/cards.vue'));
 
+Vue.component('avatars',require('./components/avatars/avatars.vue'));
+
 
 Vue.component('pizza-index',require('./components/pizzas/pizzaIndex.vue'));
 Vue.component('pizza-show',require('./components/pizzas/pizzaShow.vue'));

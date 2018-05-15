@@ -22,6 +22,9 @@ class CreateUsersTable extends Migration
             $table->integer('age')->nullable();
             $table->softDeletes();
 
+            $table->string('avatar')->nullable();
+
+
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();

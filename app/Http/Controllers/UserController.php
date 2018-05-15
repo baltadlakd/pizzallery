@@ -15,6 +15,13 @@ class UserController extends Controller
 
         return view('users.panel.control', compact('user'));
     }
+    public function avatar(Request $request, $id){
+      if(!$request->ajax()){
+        return redirect()->back();
+      }
+      $user = User::find($id);
+      return $user->avatar;
+    }
 
     public function show(Request $request, $id){
       if(!$request->ajax()){

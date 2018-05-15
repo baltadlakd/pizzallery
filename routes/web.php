@@ -43,6 +43,7 @@ Route::post('usuario/panel/editn/{user}','UserController@editName')->name('editN
 
 Route::get('usuario/all','UserController@all')->name('userAll')->middleware('auth');
 Route::get('usuario/{user}','UserController@show')->name('userShow')->middleware('auth');
+Route::get('usuario/avatar/{id}','UserController@avatar')->middleware('auth');
 
 Route::patch('usuario/{user}','UserController@update')->name('userUpdate')->middleware('auth');
 
@@ -70,3 +71,11 @@ Route::post('comentarios/{type}/{id}','CommentController@store')->middleware('au
 //==== ingredientes
 Route::get('ingredientes/{type}/{id}','TagController@index')->middleware('auth');
 Route::post('ingredientes/{type}/{id}','TagController@store')->middleware('auth');
+
+//==== avatars
+Route::post('avatar/store','AvatarController@store')->name('avatars.store')->middleware('auth');;
+Route::get('avatar','AvatarController@index')->name('avatars.index')->middleware('auth');;
+Route::get('avatar/all','AvatarController@all')->middleware('auth');;
+Route::post('avatar/set','AvatarController@update')->middleware('auth');
+Route::get('avatar/show/{id}','AvatarController@show')->middleware('auth');
+Route::delete('avatar/{avatar}','AvatarController@destroy')->middleware('auth');
