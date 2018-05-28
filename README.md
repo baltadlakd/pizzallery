@@ -1,10 +1,9 @@
 # Pizzallery
-Proyecto escolar para la clase de **programación para internet** sección **d12**.
+
+Proyecto para aprendizaje personal sobre laravel. 
 
 Cervantes Candelario Oscar Baltazar
 baltadlakd@gmail.com
-oscar.cervantes@alumnos.udg.mx
-Código: 212137826
 
 # Usar
 Para usar las funciones de registro con las redes sociales crear una aplicación en las siguientes plataformas.
